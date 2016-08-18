@@ -18,10 +18,7 @@ public class SpriteSheet {
 
     public static SpriteSheet tiles = new SpriteSheet("/texture/sheets/spritesheet.png", 256);
 
-    static {
-        //projectile_spell.load();
-        //tiles.load();
-    }
+
     public SpriteSheet(String path, int size) {
         this.path = path;
         this.SIZE = size;
