@@ -37,6 +37,11 @@ public abstract class Mob extends Entity {
 
     public void render() {}
 
+    protected void shoot(int x, int y, double dir) {
+
+        System.out.println("Angle" + Math.toDegrees(dir));
+    }
+
     private boolean collision(int xa, int ya) {
         /**Primitive and imprecise collision detection
          * Before: Look forward and check if the tile in front is solid()

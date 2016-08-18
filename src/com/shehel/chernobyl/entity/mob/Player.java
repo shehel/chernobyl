@@ -1,9 +1,11 @@
 package com.shehel.chernobyl.entity.mob;
 
+import com.shehel.chernobyl.Game;
 import com.shehel.chernobyl.entity.Mob;
 import com.shehel.chernobyl.graphics.Screen;
 import com.shehel.chernobyl.graphics.Sprite;
 import com.shehel.chernobyl.input.Keyboard;
+import com.shehel.chernobyl.input.Mouse;
 
 /**
  * Created by shehel on 8/9/2016.
@@ -36,11 +38,26 @@ public class Player extends Mob{
         if (input.left) xa--;
         if (input.right) xa++;
 
+
         if (xa != 0 || ya != 0) {
             move(xa, ya);
             walking = true;
         } else {
             walking = false;
+        }
+
+        updateShooting();
+    }
+
+    private void updateShooting() {
+
+        if (Mouse.getButton() == 1) {
+            //using players co-ordinate doesn't work because we need his co-ordinate
+            //on the window and not the map because thats what mouse uses
+            double dx = (Mouse.getX() - Game.getWindowWidth() / 2);
+            double dy = (Mouse.getY() - Game.getWindowHeight() / 2);
+            double dir = Math.atan2(dy, dx);
+            shoot(x, y, dir);
         }
     }
 
