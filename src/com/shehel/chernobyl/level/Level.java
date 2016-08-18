@@ -45,9 +45,7 @@ public class Level {
     }
 
     protected void generateLevel() {
-        for(int i = 0; i < entities.size(); i++) {
-            entities.get(i).update();
-        }
+
     }
 
     private void time() {

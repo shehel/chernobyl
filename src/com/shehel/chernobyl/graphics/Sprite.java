@@ -36,6 +36,9 @@ public class Sprite {
     public static Sprite player_side_3 = new Sprite(32, 3, 6, SpriteSheet.tiles);
 
 
+    //projectile sprites
+    public static Sprite spell = new Sprite(16, 0, 0, SpriteSheet.projectile_spell);
+
     public Sprite(int size, int x, int y, SpriteSheet sheet) {
         SIZE = size;
         pixels = new int[SIZE * SIZE];

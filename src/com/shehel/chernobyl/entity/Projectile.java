@@ -18,4 +18,12 @@ public class Projectile extends Entity {
         yOrigin = y;
         angle = dir;
     }
+
+    public Sprite getSprite() {
+        return sprite;
+    }
+
+    public int getSpriteSize() {
+        return sprite.SIZE;
+    }
 }

@@ -20,7 +20,7 @@ public class SpellProjectile extends Projectile {
         speed = 4;
         damage = 20;
         rateOfFire = 15;
-        sprite = Sprite.flower;
+        sprite = Sprite.spell;
         nx = speed * Math.cos(angle);
         ny = speed * Math.sin(angle);
         this.x = x;
@@ -37,6 +37,6 @@ public class SpellProjectile extends Projectile {
     }
 
     public void render(Screen screen) {
-        screen.renderTile(x, y, sprite);
+        screen.renderProjectile(x, y, this);
     }
 }

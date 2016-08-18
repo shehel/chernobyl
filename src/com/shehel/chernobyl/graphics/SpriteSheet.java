@@ -16,6 +16,8 @@ public class SpriteSheet {
     public int[] pixels;
 
     public static SpriteSheet tiles = new SpriteSheet("/texture/sheets/spritesheet.png", 256);
+    public static SpriteSheet projectile_spell = new SpriteSheet("/texture/sheets/projectiles/spell.png", 48);
+
     static {
         tiles.load();
     }
