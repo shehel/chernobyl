@@ -1,8 +1,11 @@
 package com.shehel.chernobyl.level;
 
+import com.shehel.chernobyl.entity.Entity;
 import com.shehel.chernobyl.graphics.Screen;
 import com.shehel.chernobyl.level.tile.Tile;
 import com.sun.xml.internal.bind.v2.TODO;
+
+import java.util.ArrayList;
 
 /**
  * Created by shehel on 8/2/2016.
@@ -13,6 +16,8 @@ public class Level {
     protected int[] tilesInt;
     //old method
     //protected Tile[] tiles;
+
+    private ArrayList<Entity> entities = new ArrayList<Entity>();
 
     protected int[] tiles;
     public Level(int width, int height) {
@@ -34,11 +39,15 @@ public class Level {
     }
 
     public void update() {
-
+        for(int i = 0; i < entities.size(); i++) {
+            entities.get(i).update();
+        }
     }
 
     protected void generateLevel() {
-
+        for(int i = 0; i < entities.size(); i++) {
+            entities.get(i).update();
+        }
     }
 
     private void time() {
@@ -72,6 +81,14 @@ public class Level {
                 //tiles[x + y * 16].render(x, y, screen);
             }
         }
+
+        for(int i = 0; i < entities.size(); i++) {
+            entities.get(i).render(screen);
+        }
+    }
+
+    public void add(Entity entity) {
+        entities.add(entity);
     }
 
    public Tile getTile(int x, int y) {

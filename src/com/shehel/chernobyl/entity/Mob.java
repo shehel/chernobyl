@@ -2,16 +2,21 @@ package com.shehel.chernobyl.entity;
 
 import com.shehel.chernobyl.graphics.Sprite;
 
+import java.util.ArrayList;
+
 /**
  * Created by shehel on 8/9/2016.
  */
 public abstract class Mob extends Entity {
+
 
     protected Sprite sprite;
     //North, East, West, South?
     protected int dir = 0;
     protected boolean moving = false;
     private final static int TILE_SIZE = 16;
+
+    protected ArrayList<Projectile> projectiles = new ArrayList<Projectile>();
 
     public void move(int xa, int ya) {
         //if moving on two axes
@@ -38,8 +43,10 @@ public abstract class Mob extends Entity {
     public void render() {}
 
     protected void shoot(int x, int y, double dir) {
-
         System.out.println("Angle" + Math.toDegrees(dir));
+        Projectile p = new SpellProjectile(x, y, dir);
+        projectiles.add(p);
+        level.add(p);
     }
 
     private boolean collision(int xa, int ya) {
