@@ -14,17 +14,21 @@ public class SpriteSheet {
     public final int SIZE;
 
     public int[] pixels;
-
-    public static SpriteSheet tiles = new SpriteSheet("/texture/sheets/spritesheet.png", 256);
     public static SpriteSheet projectile_spell = new SpriteSheet("/texture/sheets/projectiles/spell.png", 48);
 
+    public static SpriteSheet tiles = new SpriteSheet("/texture/sheets/spritesheet.png", 256);
+
     static {
-        tiles.load();
+        //projectile_spell.load();
+        //tiles.load();
     }
     public SpriteSheet(String path, int size) {
         this.path = path;
         this.SIZE = size;
         pixels = new int[SIZE * SIZE];
+        load();
+
+
     }
 
     private void load() {
