@@ -2,7 +2,7 @@ package com.shehel.chernobyl.level;
 
 /**
  * Class made for organisstion purposes
- * Created by shehe on 8/16/2016.
+ * Created by shehel on 8/16/2016.
  */
 public class TileCoordinate {
     private int x, y;

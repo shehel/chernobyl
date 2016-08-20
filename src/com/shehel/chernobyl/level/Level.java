@@ -1,6 +1,7 @@
 package com.shehel.chernobyl.level;
 
 import com.shehel.chernobyl.entity.Entity;
+import com.shehel.chernobyl.entity.Projectile;
 import com.shehel.chernobyl.graphics.Screen;
 import com.shehel.chernobyl.level.tile.Tile;
 import com.sun.xml.internal.bind.v2.TODO;
@@ -18,13 +19,13 @@ public class Level {
     //protected Tile[] tiles;
 
     private ArrayList<Entity> entities = new ArrayList<Entity>();
+    public ArrayList<Entity> projectiles = new ArrayList<>();
 
     protected int[] tiles;
     public Level(int width, int height) {
         this.width = width;
         this.height = height;
         tilesInt = new int[width * height];
-        generateRandomLevel();
     }
 
     public Level(String path) {
@@ -42,6 +43,9 @@ public class Level {
         for(int i = 0; i < entities.size(); i++) {
             entities.get(i).update();
         }
+        for(int i = 0; i < projectiles.size(); i++) {
+            projectiles.get(i).update();
+        }
     }
 
     protected void generateLevel() {
@@ -50,6 +54,10 @@ public class Level {
 
     private void time() {
 
+    }
+
+    public void addProjectile(Projectile p) {
+        projectiles.add(p);
     }
 
     public void render(int xScroll, int yScroll, Screen screen) {
@@ -83,6 +91,9 @@ public class Level {
         for(int i = 0; i < entities.size(); i++) {
             entities.get(i).render(screen);
         }
+        for(int i = 0; i < projectiles.size(); i++) {
+            projectiles.get(i).render(screen);
+        }
     }
 
     public void add(Entity entity) {
@@ -106,7 +117,4 @@ public class Level {
         return Tile.rock;
     }
 
-    protected void generateRandomLevel() {
-
-    }
 }

@@ -16,7 +16,6 @@ public abstract class Mob extends Entity {
     protected boolean moving = false;
     private final static int TILE_SIZE = 16;
 
-    protected ArrayList<Projectile> projectiles = new ArrayList<Projectile>();
 
     public void move(int xa, int ya) {
         //if moving on two axes
@@ -38,15 +37,17 @@ public abstract class Mob extends Entity {
         }
     }
 
-    public void update() {}
+    public void update() {
+
+    }
 
     public void render() {}
 
     protected void shoot(int x, int y, double dir) {
         System.out.println("Angle" + Math.toDegrees(dir));
         Projectile p = new SpellProjectile(x, y, dir);
-        projectiles.add(p);
         level.add(p);
+        level.addProjectile(p);
     }
 
     private boolean collision(int xa, int ya) {
@@ -54,6 +55,7 @@ public abstract class Mob extends Entity {
          * Before: Look forward and check if the tile in front is solid()
          * Now: Corner System
          */
+
         boolean solid = false;
         for (int c =0; c < 4; c++) {
             // Get the corners

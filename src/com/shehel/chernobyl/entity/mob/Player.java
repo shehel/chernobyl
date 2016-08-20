@@ -2,6 +2,7 @@ package com.shehel.chernobyl.entity.mob;
 
 import com.shehel.chernobyl.Game;
 import com.shehel.chernobyl.entity.Mob;
+import com.shehel.chernobyl.entity.Projectile;
 import com.shehel.chernobyl.graphics.Screen;
 import com.shehel.chernobyl.graphics.Sprite;
 import com.shehel.chernobyl.input.Keyboard;
@@ -31,6 +32,7 @@ public class Player extends Mob{
 
     public void update() {
         int xa = 0, ya = 0;
+        //counter to shift between animation
         if (anim < 7500) anim++;
         else anim = 0;
         if (input.up) ya--;
@@ -45,10 +47,17 @@ public class Player extends Mob{
         } else {
             walking = false;
         }
-
+        clear();
         updateShooting();
+
     }
 
+    private void clear() {
+        for (int i = 0; i < level.projectiles.size(); i++) {
+            Projectile p = projectiles.get(i);
+            if (p.isRemoved()) projectiles.remove(i);
+        }
+    }
     private void updateShooting() {
 
         if (Mouse.getButton() == 1) {
